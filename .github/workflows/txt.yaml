@@ -1,4 +1,5 @@
-name: Build and Deploy Static Website
+name: Build and Deploy Static
+###
 
 on:
   push:
