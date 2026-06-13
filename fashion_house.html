@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAISON ÉCLAT — Haute Couture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F5F0E8;
+    --ivory: #FAF8F3;
+    --charcoal: #1A1A18;
+    --deep: #0D0D0B;
+    --gold: #B8965A;
+    --gold-light: #D4B07A;
+    --muted: #6B6560;
+    --border: rgba(184,150,90,0.25);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Raleway', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    padding: 2rem 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(13,13,11,0.95), transparent);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex; gap: 3rem; list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.3s, color 0.3s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--gold-light); }
+
+  .nav-cta {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 0.5px solid var(--gold);
+    padding: 0.6rem 1.4rem;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .nav-cta:hover { background: var(--gold); color: var(--deep); }
+
+  /* ── HERO ── */
+  .hero {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 8rem 5vw 6rem 8vw;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute; right: 0; top: 10%; bottom: 10%;
+    width: 0.5px; background: var(--border);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(4rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--ivory);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-body {
+    font-size: 0.85rem;
+    line-height: 2;
+    color: var(--muted);
+    max-width: 340px;
+    margin-bottom: 3.5rem;
+  }
+
+  .hero-actions {
+    display: flex; gap: 2rem; align-items: center;
+  }
+
+  .btn-primary {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--deep);
+    background: var(--gold);
+    padding: 1rem 2.2rem;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-ghost {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--muted);
+    padding-bottom: 2px;
+    transition: color 0.3s;
+  }
+
+  .btn-ghost:hover { color: var(--cream); }
+
+  .hero-right {
+    position: relative;
+    background: #111110;
+    overflow: hidden;
+  }
+
+  .hero-visual {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+  }
+
+  /* Hero visual — SVG placeholder with sophisticated geometric composition */
+  .hero-art {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero-scroll {
+    position: absolute; bottom: 3rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .scroll-line {
+    width: 0.5px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-strip {
+    padding: 1.2rem 0;
+    background: var(--gold);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-inner {
+    display: inline-flex; gap: 4rem;
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee-inner span {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--deep);
+    font-weight: 500;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION UTILITY ── */
+  section { padding: 8rem 8vw; }
+
+  .section-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ivory);
+  }
+
+  .section-title em { font-style: italic; color: var(--gold-light); }
+
+  /* ── COLLECTIONS ── */
+  .collections { background: var(--charcoal); }
+
+  .collections-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 5rem;
+  }
+
+  .collections-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 500px 300px;
+    gap: 1.5rem;
+  }
+
+  .coll-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .coll-item:first-child { grid-row: span 2; }
+
+  .coll-art {
+    width: 100%; height: 100%;
+    transition: transform 0.6s ease;
+  }
+
+  .coll-item:hover .coll-art { transform: scale(1.03); }
+
+  .coll-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 2rem 1.8rem;
+    background: linear-gradient(to top, rgba(13,13,11,0.9) 0%, transparent 100%);
+  }
+
+  .coll-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .coll-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--ivory);
+  }
+
+  /* ── PHILOSOPHY ── */
+  .philosophy {
+    background: var(--deep);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: center;
+  }
+
+  .philosophy-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--cream);
+    border-left: 0.5px solid var(--gold);
+    padding-left: 2.5rem;
+  }
+
+  .philosophy-quote cite {
+    display: block;
+    margin-top: 1.5rem;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .philosophy-body { color: var(--muted); line-height: 2; font-size: 0.9rem; }
+
+  .philosophy-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; margin-top: 3rem;
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.4rem;
+  }
+
+  /* ── PROCESS ── */
+  .process { background: var(--charcoal); }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-top: 5rem;
+  }
+
+  .process-step { position: relative; }
+
+  .process-num {
+    font-family: var(--serif);
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .process-line {
+    width: 40px; height: 0.5px;
+    background: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .process-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+
+  .process-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  /* ── ATELIER ── */
+  .atelier {
+    background: var(--deep);
+    text-align: center;
+    padding: 10rem 8vw;
+  }
+
+  .atelier .section-title {
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .atelier-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 2;
+    max-width: 450px;
+    margin: 0 auto 3.5rem;
+  }
+
+  /* ── LOOKBOOK ── */
+  .lookbook { background: var(--charcoal); padding: 8rem 0; }
+
+  .lookbook-header {
+    padding: 0 8vw;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .lookbook-scroll {
+    display: flex; gap: 1.5rem;
+    overflow-x: auto;
+    padding: 0 8vw;
+    scrollbar-width: none;
+  }
+
+  .lookbook-scroll::-webkit-scrollbar { display: none; }
+
+  .look-card {
+    flex: 0 0 280px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .look-img { width: 100%; height: 400px; display: block; }
+
+  .look-info {
+    padding: 1.2rem 0;
+  }
+
+  .look-season {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .look-name {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--cream);
+  }
+
+  .look-price {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080807;
+    padding: 6rem 8vw 3rem;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+  }
+
+  .footer-brand-name {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand-tagline {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.9;
+    max-width: 260px;
+  }
+
+  .footer-col-title {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-links { list-style: none; }
+
+  .footer-links li { margin-bottom: 0.8rem; }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 2.5rem;
+    border-top: 0.5px solid var(--border);
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.9s ease both 0.2s; }
+  .hero-title { animation: fadeUp 0.9s ease both 0.4s; }
+  .hero-body { animation: fadeUp 0.9s ease both 0.6s; }
+  .hero-actions { animation: fadeUp 0.9s ease both 0.8s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    nav .nav-links { display: none; }
+    .collections-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .coll-item:first-child { grid-row: auto; grid-column: span 2; }
+    .philosophy { grid-template-columns: 1fr; gap: 4rem; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Maison Éclat</a>
+  <ul class="nav-links">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#atelier">Atelier</a></li>
+    <li><a href="#lookbook">Lookbook</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Appointment</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Paris · Milan · New York · 2025</p>
+    <h1 class="hero-title">
+      Where Craft<br>Becomes<br><em>Couture</em>
+    </h1>
+    <p class="hero-body">Each piece is a dialogue between tradition and the avant-garde — draped in silence, finished with intention.</p>
+    <div class="hero-actions">
+      <a href="#collections" class="btn-primary">Explore Collection</a>
+      <a href="#atelier" class="btn-ghost">Our Atelier</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-art">
+      <svg width="100%" height="100%" viewBox="0 0 600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="600" height="900" fill="#0D0D0B"/>
+        <!-- Geometric fashion silhouette -->
+        <rect x="0" y="0" width="600" height="900" fill="url(#heroGrad)"/>
+        <defs>
+          <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1A1A14"/>
+            <stop offset="100%" stop-color="#080806"/>
+          </linearGradient>
+        </defs>
+        <!-- Abstract fashion form -->
+        <ellipse cx="300" cy="200" rx="80" ry="90" fill="#1E1D18" stroke="#B8965A" stroke-width="0.5"/>
+        <!-- Body shape -->
+        <path d="M220 280 Q180 350 170 500 Q160 600 190 750 L410 750 Q440 600 430 500 Q420 350 380 280 Z" fill="#161612" stroke="#B8965A" stroke-width="0.5"/>
+        <!-- Draped fabric lines -->
+        <path d="M220 280 Q260 320 300 310 Q340 300 380 280" fill="none" stroke="#B8965A" stroke-width="0.5" opacity="0.6"/>
+        <path d="M185 400 Q240 430 300 420 Q360 410 415 400" fill="none" stroke="#B8965A" stroke-width="0.3" opacity="0.4"/>
+        <path d="M178 480 Q238 515 300 505 Q362 495 422 480" fill="none" stroke="#B8965A" stroke-width="0.3" opacity="0.4"/>
+        <path d="M182 560 Q241 590 300 582 Q360 574 418 560" fill="none" stroke="#B8965A" stroke-width="0.3" opacity="0.35"/>
+        <path d="M190 640 Q245 665 300 658 Q355 651 410 640" fill="none" stroke="#B8965A" stroke-width="0.3" opacity="0.3"/>
+        <!-- Gold accent cross -->
+        <line x1="300" y1="60" x2="300" y2="150" stroke="#B8965A" stroke-width="0.5" opacity="0.5"/>
+        <line x1="255" y1="105" x2="345" y2="105" stroke="#B8965A" stroke-width="0.5" opacity="0.5"/>
+        <!-- Decorative corner lines -->
+        <line x1="30" y1="30" x2="80" y2="30" stroke="#B8965A" stroke-width="0.5" opacity="0.4"/>
+        <line x1="30" y1="30" x2="30" y2="80" stroke="#B8965A" stroke-width="0.5" opacity="0.4"/>
+        <line x1="520" y1="30" x2="570" y2="30" stroke="#B8965A" stroke-width="0.5" opacity="0.4"/>
+        <line x1="570" y1="30" x2="570" y2="80" stroke="#B8965A" stroke-width="0.5" opacity="0.4"/>
+        <line x1="30" y1="820" x2="80" y2="820" stroke="#B8965A" stroke-width="0.5" opacity="0.4"/>
+        <line x1="30" y1="820" x2="30" y2="870" stroke="#B8965A" stroke-width="0.5" opacity="0.4"/>
+        <line x1="520" y1="820" x2="570" y2="820" stroke="#B8965A" stroke-width="0.5" opacity="0.4"/>
+        <line x1="570" y1="820" x2="570" y2="870" stroke="#B8965A" stroke-width="0.5" opacity="0.4"/>
+        <!-- Label -->
+        <text x="300" y="810" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="11" letter-spacing="6" fill="#B8965A" opacity="0.6">AUTOMNE — HIVER 2025</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Haute Couture</span><span>·</span>
+    <span>Prêt-à-Porter</span><span>·</span>
+    <span>Accessories</span><span>·</span>
+    <span>Bridal Atelier</span><span>·</span>
+    <span>Made to Measure</span><span>·</span>
+    <span>Maison Éclat</span><span>·</span>
+    <span>Since 1987</span><span>·</span>
+    <span>Haute Couture</span><span>·</span>
+    <span>Prêt-à-Porter</span><span>·</span>
+    <span>Accessories</span><span>·</span>
+    <span>Bridal Atelier</span><span>·</span>
+    <span>Made to Measure</span><span>·</span>
+    <span>Maison Éclat</span><span>·</span>
+    <span>Since 1987</span><span>·</span>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="collections" id="collections">
+  <div class="collections-header">
+    <div>
+      <p class="section-eyebrow">Saison Actuelle</p>
+      <h2 class="section-title">Autumn <em>Winter</em><br>2025 Collection</h2>
+    </div>
+    <a href="#" class="btn-ghost" style="color: var(--gold); border-color: var(--gold);">View All Pieces →</a>
+  </div>
+  <div class="collections-grid">
+
+    <!-- Feature piece -->
+    <div class="coll-item">
+      <svg class="coll-art" viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="800" fill="#111110"/>
+        <rect x="0" y="0" width="400" height="800" fill="#13120E" opacity="0.8"/>
+        <ellipse cx="200" cy="140" rx="55" ry="58" fill="#1A1914" stroke="#B8965A" stroke-width="0.5"/>
+        <path d="M145 198 Q110 270 100 430 Q90 560 120 720 L280 720 Q310 560 300 430 Q290 270 255 198 Z" fill="#171612" stroke="#B8965A" stroke-width="0.5"/>
+        <!-- Flowing cape -->
+        <path d="M80 230 Q40 350 30 500 Q20 600 60 700 L120 720 Q90 560 100 430 Q110 270 145 198 Z" fill="#1C1B16" stroke="#B8965A" stroke-width="0.3" opacity="0.7"/>
+        <path d="M320 230 Q360 350 370 500 Q380 600 340 700 L280 720 Q310 560 300 430 Q290 270 255 198 Z" fill="#1C1B16" stroke="#B8965A" stroke-width="0.3" opacity="0.7"/>
+        <!-- Fabric drape lines -->
+        <path d="M145 198 Q175 220 200 215 Q225 210 255 198" fill="none" stroke="#B8965A" stroke-width="0.5" opacity="0.6"/>
+        <path d="M108 320 Q155 345 200 338 Q245 331 292 320" fill="none" stroke="#B8965A" stroke-width="0.3" opacity="0.4"/>
+        <path d="M102 440 Q152 465 200 458 Q248 451 298 440" fill="none" stroke="#B8965A" stroke-width="0.3" opacity="0.35"/>
+        <path d="M108 560 Q155 580 200 575 Q245 570 292 560" fill="none" stroke="#B8965A" stroke-width="0.3" opacity="0.3"/>
+        <text x="200" y="765" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" letter-spacing="4" fill="#B8965A" opacity="0.7">LOOK 01</text>
+      </svg>
+      <div class="coll-overlay">
+        <p class="coll-tag">Feature Piece</p>
+        <h3 class="coll-name">La Robe Fantôme</h3>
+      </div>
+    </div>
+
+    <!-- Piece 2 -->
+    <div class="coll-item">
+      <svg class="coll-art" viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="500" fill="#16150F"/>
+        <ellipse cx="150" cy="90" rx="42" ry="45" fill="#1E1C15" stroke="#D4B07A" stroke-width="0.5"/>
+        <path d="M108 135 Q80 190 75 290 Q70 370 90 460 L210 460 Q230 370 225 290 Q220 190 192 135 Z" fill="#1A1812" stroke="#D4B07A" stroke-width="0.5"/>
+        <rect x="108" y="135" width="84" height="8" fill="#B8965A" opacity="0.4"/>
+        <path d="M108 200 Q148 215 150 212 Q152 209 192 200" fill="none" stroke="#D4B07A" stroke-width="0.3" opacity="0.5"/>
+        <path d="M76 310 Q148 325 150 322 Q152 319 224 310" fill="none" stroke="#D4B07A" stroke-width="0.3" opacity="0.35"/>
+        <text x="150" y="485" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8" letter-spacing="3" fill="#B8965A" opacity="0.6">LOOK 02</text>
+      </svg>
+      <div class="coll-overlay">
+        <p class="coll-tag">Evening</p>
+        <h3 class="coll-name">Velours Noir</h3>
+      </div>
+    </div>
+
+    <!-- Piece 3 -->
+    <div class="coll-item">
+      <svg class="coll-art" viewBox="0 0 300 500" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="500" fill="#12110C"/>
+        <ellipse cx="150" cy="90" rx="42" ry="45" fill="#1E1C15" stroke="#B8965A" stroke-width="0.5"/>
+        <!-- Structured jacket silhouette -->
+        <path d="M108 135 L75 160 L70 300 L108 310 L108 460 L192 460 L192 310 L230 300 L225 160 L192 135 Z" fill="#191813" stroke="#B8965A" stroke-width="0.5"/>
+        <!-- Lapels -->
+        <path d="M108 135 L130 200 L150 180 L170 200 L192 135" fill="#201F18" stroke="#B8965A" stroke-width="0.4"/>
+        <!-- Button line -->
+        <line x1="150" y1="180" x2="150" y2="460" stroke="#B8965A" stroke-width="0.3" opacity="0.5" stroke-dasharray="4 6"/>
+        <circle cx="150" cy="220" r="3" fill="none" stroke="#B8965A" stroke-width="0.5"/>
+        <circle cx="150" cy="260" r="3" fill="none" stroke="#B8965A" stroke-width="0.5"/>
+        <circle cx="150" cy="300" r="3" fill="none" stroke="#B8965A" stroke-width="0.5"/>
+        <text x="150" y="485" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8" letter-spacing="3" fill="#B8965A" opacity="0.6">LOOK 03</text>
+      </svg>
+      <div class="coll-overlay">
+        <p class="coll-tag">Tailoring</p>
+        <h3 class="coll-name">Le Manteau</h3>
+      </div>
+    </div>
+
+    <!-- Piece 4 -->
+    <div class="coll-item">
+      <svg class="coll-art" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="300" fill="#0F0E0A"/>
+        <rect x="50" y="30" width="200" height="240" rx="2" fill="#1A1914" stroke="#B8965A" stroke-width="0.5"/>
+        <rect x="65" y="45" width="170" height="210" rx="1" fill="#141310" stroke="#B8965A" stroke-width="0.3" opacity="0.5"/>
+        <!-- Clutch detail -->
+        <line x1="65" y1="130" x2="235" y2="130" stroke="#B8965A" stroke-width="0.5" opacity="0.6"/>
+        <rect x="125" y="118" width="50" height="24" rx="12" fill="#B8965A" opacity="0.9"/>
+        <text x="150" y="133" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8" letter-spacing="2" fill="#0D0D0B">ÉCLAT</text>
+        <text x="150" y="285" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8" letter-spacing="3" fill="#B8965A" opacity="0.6">ACCESSORY</text>
+      </svg>
+      <div class="coll-overlay">
+        <p class="coll-tag">Accessories</p>
+        <h3 class="coll-name">Pochette Dorée</h3>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="about" style="padding: 10rem 8vw;">
+  <blockquote class="philosophy-quote">
+    "Luxury is not about excess. It is about the perfect weight of a hem, the silence of a well-cut seam."
+    <cite>— Isabelle Marchand, Creative Director</cite>
+  </blockquote>
+  <div>
+    <p class="section-eyebrow">Notre Philosophie</p>
+    <h2 class="section-title" style="margin-bottom: 1.5rem;">Craft that<br>endures <em>time</em></h2>
+    <p class="philosophy-body">Founded in Paris in 1987, Maison Éclat was built on a singular belief: that fashion can be both art and architecture. Each garment passes through the hands of master artisans who understand that perfection lies not in grandeur, but in the invisible details no one sees — but everyone feels.</p>
+    <div class="philosophy-stats">
+      <div>
+        <div class="stat-num">38</div>
+        <div class="stat-label">Years of couture</div>
+      </div>
+      <div>
+        <div class="stat-num">6</div>
+        <div class="stat-label">Flagship ateliers</div>
+      </div>
+      <div>
+        <div class="stat-num">120</div>
+        <div class="stat-label">Master artisans</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Collections per year</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="atelier">
+  <p class="section-eyebrow">L'Atelier</p>
+  <h2 class="section-title">How a <em>garment</em><br>comes to life</h2>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <div class="process-line"></div>
+      <h3 class="process-title">Inspiration</h3>
+      <p class="process-desc">Every collection begins in silence — in long walks through museums, in the memory of a particular light on fabric. Ideas are gathered for months before a single sketch is drawn.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <div class="process-line"></div>
+      <h3 class="process-title">Draping</h3>
+      <p class="process-desc">Our ateliers work in muslin before touching the final cloth. Silhouettes are sculpted directly on the mannequin, adjusting until the form breathes as intended.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <div class="process-line"></div>
+      <h3 class="process-title">Fabrication</h3>
+      <p class="process-desc">We work exclusively with heritage mills in Lyon, Como, and Scotland — sourcing fabrics that carry their own history, weight, and memory.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <div class="process-line"></div>
+      <h3 class="process-title">Finishing</h3>
+      <p class="process-desc">A single gown requires up to 400 hours of handwork. Our finishers are trained for a decade before touching a couture piece. The final stitch is never rushed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ATELIER CTA -->
+<section class="atelier">
+  <p class="section-eyebrow">Rendez-vous Privé</p>
+  <h2 class="section-title">Experience the atelier<br><em>in person</em></h2>
+  <p class="atelier-sub">We invite a select number of clients each season to visit our Paris atelier for a private consultation and bespoke fitting experience.</p>
+  <a href="#contact" class="btn-primary" style="display:inline-block;">Request an Appointment</a>
+</section>
+
+<!-- LOOKBOOK -->
+<section class="lookbook" id="lookbook" style="padding: 8rem 0;">
+  <div class="lookbook-header">
+    <div>
+      <p class="section-eyebrow">Éditorial</p>
+      <h2 class="section-title">The Lookbook</h2>
+    </div>
+    <a href="#" class="btn-ghost" style="color: var(--gold); border-color: var(--gold);">Full Story →</a>
+  </div>
+  <div class="lookbook-scroll">
+
+    <!-- Look Cards with SVG art -->
+    <div class="look-card" style="flex: 0 0 260px;">
+      <svg class="look-img" viewBox="0 0 260 400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="260" height="400" fill="#111110"/>
+        <ellipse cx="130" cy="80" rx="38" ry="40" fill="#1E1C15" stroke="#B8965A" stroke-width="0.4"/>
+        <path d="M92 120 Q68 175 62 265 Q58 330 78 390 L182 390 Q202 330 198 265 Q192 175 168 120 Z" fill="#181712" stroke="#B8965A" stroke-width="0.4"/>
+        <path d="M92 120 Q110 140 130 136 Q150 132 168 120" fill="none" stroke="#D4B07A" stroke-width="0.4" opacity="0.6"/>
+        <path d="M65 200 Q125 215 130 212 Q135 209 195 200" fill="none" stroke="#B8965A" stroke-width="0.25" opacity="0.4"/>
+        <path d="M62 280 Q124 292 130 290 Q136 288 198 280" fill="none" stroke="#B8965A" stroke-width="0.25" opacity="0.35"/>
+      </svg>
+      <div class="look-info">
+        <p class="look-season">AW 2025</p>
+        <p class="look-name">Robe Silhouette</p>
+        <p class="look-price">On request</p>
+      </div>
+    </div>
+
+    <div class="look-card" style="flex: 0 0 200px; margin-top: 3rem;">
+      <svg class="look-img" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="400" fill="#16150F"/>
+        <ellipse cx="100" cy="75" rx="34" ry="36" fill="#201E16" stroke="#B8965A" stroke-width="0.4"/>
+        <!-- Wide-leg trouser + blouse -->
+        <path d="M66 111 L40 130 L38 210 L66 220 L66 390 L100 390 L100 220 L134 390 L134 220 L162 220 L160 210 L158 130 L134 111 Z" fill="#191813" stroke="#B8965A" stroke-width="0.4"/>
+        <path d="M66 111 Q85 128 100 124 Q115 120 134 111" fill="none" stroke="#D4B07A" stroke-width="0.4" opacity="0.6"/>
+        <line x1="100" y1="215" x2="100" y2="390" stroke="#B8965A" stroke-width="0.3" opacity="0.4"/>
+        <path d="M38 165 Q98 178 100 176 Q102 174 162 165" fill="none" stroke="#B8965A" stroke-width="0.25" opacity="0.4"/>
+      </svg>
+      <div class="look-info">
+        <p class="look-season">AW 2025</p>
+        <p class="look-name">Ensemble Flou</p>
+        <p class="look-price">From €3,800</p>
+      </div>
+    </div>
+
+    <div class="look-card" style="flex: 0 0 280px;">
+      <svg class="look-img" viewBox="0 0 280 400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="280" height="400" fill="#0F0E0A"/>
+        <ellipse cx="140" cy="80" rx="40" ry="42" fill="#1E1C14" stroke="#B8965A" stroke-width="0.4"/>
+        <!-- Coat -->
+        <path d="M100 122 L55 150 L48 350 L100 360 L100 390 L180 390 L180 360 L232 350 L225 150 L180 122 Z" fill="#1C1A13" stroke="#B8965A" stroke-width="0.5"/>
+        <!-- Lapels -->
+        <path d="M100 122 L118 185 L140 165 L162 185 L180 122" fill="#231F14" stroke="#B8965A" stroke-width="0.4"/>
+        <!-- Buttons -->
+        <circle cx="140" cy="210" r="3.5" fill="none" stroke="#B8965A" stroke-width="0.5"/>
+        <circle cx="140" cy="248" r="3.5" fill="none" stroke="#B8965A" stroke-width="0.5"/>
+        <circle cx="140" cy="286" r="3.5" fill="none" stroke="#B8965A" stroke-width="0.5"/>
+        <!-- Pocket -->
+        <rect x="80" y="270" width="30" height="40" rx="1" fill="none" stroke="#B8965A" stroke-width="0.3" opacity="0.5"/>
+      </svg>
+      <div class="look-info">
+        <p class="look-season">AW 2025</p>
+        <p class="look-name">Grand Manteau</p>
+        <p class="look-price">From €6,200</p>
+      </div>
+    </div>
+
+    <div class="look-card" style="flex: 0 0 220px; margin-top: 2rem;">
+      <svg class="look-img" viewBox="0 0 220 400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="220" height="400" fill="#12110D"/>
+        <ellipse cx="110" cy="78" rx="36" ry="38" fill="#1E1C14" stroke="#B8965A" stroke-width="0.4"/>
+        <!-- Slip dress -->
+        <path d="M74 116 Q50 140 46 270 Q44 340 60 390 L160 390 Q176 340 174 270 Q170 140 146 116 Z" fill="#1A1813" stroke="#B8965A" stroke-width="0.4"/>
+        <!-- Spaghetti strap detail -->
+        <line x1="90" y1="116" x2="86" y2="55" stroke="#B8965A" stroke-width="1" opacity="0.6"/>
+        <line x1="130" y1="116" x2="134" y2="55" stroke="#B8965A" stroke-width="1" opacity="0.6"/>
+        <!-- Bias cut lines -->
+        <path d="M46 200 Q108 218 110 215 Q112 212 174 200" fill="none" stroke="#B8965A" stroke-width="0.25" opacity="0.4"/>
+        <path d="M44 290 Q107 305 110 302 Q113 299 176 290" fill="none" stroke="#B8965A" stroke-width="0.25" opacity="0.35"/>
+      </svg>
+      <div class="look-info">
+        <p class="look-season">AW 2025</p>
+        <p class="look-name">Nuisette Couture</p>
+        <p class="look-price">From €2,400</p>
+      </div>
+    </div>
+
+    <div class="look-card" style="flex: 0 0 240px; margin-top: 1rem;">
+      <svg class="look-img" viewBox="0 0 240 400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="240" height="400" fill="#0D0C09"/>
+        <ellipse cx="120" cy="76" rx="38" ry="40" fill="#201E15" stroke="#D4B07A" stroke-width="0.4"/>
+        <!-- Structured suit -->
+        <path d="M82 116 L45 138 L42 260 L82 270 L82 390 L158 390 L158 270 L198 260 L195 138 L158 116 Z" fill="#1C1B12" stroke="#D4B07A" stroke-width="0.45"/>
+        <!-- Jacket lapels -->
+        <path d="M82 116 L100 175 L120 155 L140 175 L158 116" fill="#22200E" stroke="#D4B07A" stroke-width="0.35"/>
+        <!-- Gold trim at hem and cuffs -->
+        <line x1="42" y1="248" x2="82" y2="258" stroke="#D4B07A" stroke-width="1" opacity="0.6"/>
+        <line x1="158" y1="258" x2="198" y2="248" stroke="#D4B07A" stroke-width="1" opacity="0.6"/>
+        <line x1="82" y1="378" x2="158" y2="378" stroke="#D4B07A" stroke-width="1" opacity="0.6"/>
+      </svg>
+      <div class="look-info">
+        <p class="look-season">AW 2025</p>
+        <p class="look-name">Tailleur d'Or</p>
+        <p class="look-price">From €4,900</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Maison Éclat</div>
+      <p class="footer-brand-tagline">Haute couture since 1987. Crafted in Paris, worn everywhere that matters.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Collections</p>
+      <ul class="footer-links">
+        <li><a href="#">Haute Couture</a></li>
+        <li><a href="#">Prêt-à-Porter</a></li>
+        <li><a href="#">Accessories</a></li>
+        <li><a href="#">Bridal</a></li>
+        <li><a href="#">Archive</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Maison</p>
+      <ul class="footer-links">
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">The Atelier</a></li>
+        <li><a href="#">Artisans</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Contact</p>
+      <ul class="footer-links">
+        <li><a href="#">Paris Flagship</a></li>
+        <li><a href="#">Milan Atelier</a></li>
+        <li><a href="#">New York</a></li>
+        <li><a href="#">Private Appointments</a></li>
+        <li><a href="#">contact@maisoneclat.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Maison Éclat. All rights reserved.</span>
+    <span style="letter-spacing: 0.3em; font-size: 0.6rem; color: var(--gold); opacity: 0.6;">PARIS · MILAN · NEW YORK · TOKYO</span>
+    <span>Privacy · Legal · Cookies</span>
+  </div>
+</footer>
+
+<script>
+  // Smooth reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.process-step, .coll-item, .look-card, .stat-num').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    observer.observe(el);
+  });
+
+  // Stagger collection items
+  document.querySelectorAll('.coll-item').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.1}s`;
+  });
+
+  document.querySelectorAll('.process-step').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.15}s`;
+  });
+</script>
+</body>
+</html>
